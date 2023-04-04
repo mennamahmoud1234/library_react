@@ -4,13 +4,13 @@ import axios from 'axios';
 
 const Home = () => {
     // eslint-disable-next-line
-    const [books,setBooks] = useState([]);
+    const [chapter,setChapter] = useState([]);
 
 
     const getData = async () => {
         try{
           const {data} = await axios.get("http://localhost:4000/chapters");
-          setBooks(data)
+          setChapter(data)
         }
         catch(err) {
           console.log(err);
@@ -44,14 +44,14 @@ const Home = () => {
 
 
                         {
-                books.map((data,i)=>(
+               chapter.map((data,i)=>(
                   <tr key={i}>
                   <td>{data.id}</td>
                   <td>{data.Title}</td>
                   <td>{data.Description}</td>
                   <td>
-                  <button className='btn btn-primary'>Update</button>
-                  <button className='btn btn-danger ms-2'>Delete</button>
+                  <Link to={`EditChapter/${data.id}`} className='btn btn-primary'>Update</Link>
+                  <Link className='btn btn-danger ms-2'>Delete</Link>
                   </td>
                   </tr>
 
