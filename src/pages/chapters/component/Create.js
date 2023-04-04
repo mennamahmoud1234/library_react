@@ -3,23 +3,35 @@ import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 function Create() {
 
-const [title,setTitle]=useState('')
-const [description,setDescription]=useState('')
-const [bookId,setBookId]=useState('')
+const [Title,setTitle]=useState('')
+const [Description,setDescription]=useState('')
+const [Book_Id,setBook_Id]=useState('')
+
 const navigate=useNavigate();
+
+
+
+
 
     function handleSubmit(event)
     {
 
 
         event.preventDefault();
-        axios.post('http://localhost:4000/chapters',{title,description,bookId})
+        axios.post('http://localhost:4000/chapters',
+          {'Title': Title,'Description': Description,'Book_Id':Book_Id},
+        
+       {headers: { 'content-type': 'application/x-www-form-urlencoded' }} 
+        )
         .then(res=>{console.log("blaalal");
             navigate('/');
         
         
         })
         .catch(error=>console.log("error"));
+
+        
+
     }
 
     return(
@@ -29,7 +41,7 @@ const navigate=useNavigate();
        
         <div className='input-gp my-3'>
           <label htmlFor=''>Title</label>
-          <input  className='form-control my-2'  type='text' onChange={e=>setTitle(e.target.value)}></input>
+          <input  className='form-control my-2'  type='text' onChange={e=>setTitle(e.target.value)}  ></input>
         </div>
         <div className='input-gp my-3'>
           <label htmlFor=''>Description</label>
@@ -38,7 +50,7 @@ const navigate=useNavigate();
        
         <div className='input-gp my-3'>
           <label htmlFor='d'>Book_id</label>
-          <input  className='form-control my-2'  onChange={e=>setBookId(e.target.value)}></input>
+          <input  className='form-control my-2'  onChange={e=>setBook_Id(e.target.value)}></input>
         </div>
         
         <button className='btn btn-success'>Submit</button>
