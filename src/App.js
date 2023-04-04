@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Routes,Route } from 'react-router-dom';
 import Create   from "./pages/chapters/component/Create";
 import Home from './pages/chapters/Home';
+import EditChapter from "./pages/chapters/component/EditChapter";
 function App() {
   return (
    <>
@@ -16,9 +17,10 @@ function App() {
       
       <Route path='/' element={<Home/>}></Route>
       
-      <Route path='/create' element={<Create/>}></Route>
+      <Route path='/Create' element={<Create/>}></Route>
       
-    
+      <Route path='/EditChapter/:id' element={<EditChapter/>}></Route>
+      
     </Routes>
    
    

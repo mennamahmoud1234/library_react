@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-function Create() {
+function EditChapter() {
 
 const [title,setTitle]=useState('')
 const [description,setDescription]=useState('')
-const [bookId,setBookId]=useState('')
+const {id}=useParams(); 
 const navigate=useNavigate();
 
     function handleSubmit(event)
@@ -13,7 +13,7 @@ const navigate=useNavigate();
 
 
         event.preventDefault();
-        axios.post('http://localhost:4000/chapters',{title,description,bookId})
+        axios.put('http://localhost:4000/chapters/'+id,{title,description})
         .then(res=>{console.log("blaalal");
             navigate('/');
         
@@ -25,7 +25,7 @@ const navigate=useNavigate();
     return(
         <div className='w-75 m-auto'>
       <form onSubmit={handleSubmit} >
-        <h1 className='my-5'>Create Form</h1>
+        <h1 className='my-5'>Update Chapter</h1>
        
         <div className='input-gp my-3'>
           <label htmlFor=''>Title</label>
@@ -36,12 +36,9 @@ const navigate=useNavigate();
           <input  className='form-control my-2' type='text'onChange={e=>setDescription(e.target.value)}></input>
         </div>
        
-        <div className='input-gp my-3'>
-          <label htmlFor='d'>Book_id</label>
-          <input  className='form-control my-2'  onChange={e=>setBookId(e.target.value)}></input>
-        </div>
+     
         
-        <button className='btn btn-success'>Submit</button>
+        <button className='btn btn-success'>Update</button>
 
       </form>
     </div>
@@ -51,4 +48,4 @@ const navigate=useNavigate();
 
     )
 }
-export default Create
+export default EditChapter
