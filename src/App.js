@@ -11,8 +11,10 @@ import DeleteReader from './pages/reader/components/DeleteReader';
 import UpdateReader from './pages/reader/components/UpdateReader';
 import DetailsReader from './pages/reader/components/DetailsReader';
 import EditChapter from "./pages/chapters/component/EditChapter";
+import Notfound from "./Notfound"
 function App() {
   return (
+<<<<<<< HEAD
     <>
       <Header />
       <Outlet />
@@ -39,6 +41,26 @@ function App() {
     </>
 
 
+=======
+   <>
+   <Header/>
+   <Outlet/>
+  
+
+   <Routes>
+       <Route path='*' element={<Notfound/>}></Route>
+      <Route path='/' element={<Home/>}></Route>
+      
+      <Route path='/Create' element={<Create/>}></Route>
+      
+      <Route path='/EditChapter/:id' element={<EditChapter/>}></Route>
+      
+    </Routes>
+    <Footer/>
+   
+   
+   </>
+>>>>>>> b3f60b8e897e91c27ebc5b442158a358a2212b9e
   );
 };
 
