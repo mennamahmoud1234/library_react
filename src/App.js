@@ -10,6 +10,7 @@ import AddReader from './pages/reader/components/AddReader';
 import DeleteReader from './pages/reader/components/DeleteReader';
 import UpdateReader from './pages/reader/components/UpdateReader';
 import DetailsReader from './pages/reader/components/DetailsReader';
+import EditChapter from "./pages/chapters/component/EditChapter";
 function App() {
   return (
     <>
@@ -19,7 +20,8 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/create' element={<Create />}></Route>
+        <Route path='/Create' element={<Create />}></Route>
+        <Route path='/EditChapter/:id' element={<EditChapter />}></Route>
 
 
 
@@ -35,6 +37,8 @@ function App() {
       <Footer />
 
     </>
+
+
   );
 };
 
