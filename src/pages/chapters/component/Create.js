@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Create() {
 
@@ -34,30 +34,26 @@ function Create() {
 
   }
 
-
   return (
     <div className='w-75 m-auto'>
       <form onSubmit={handleSubmit} >
         <h1 className='my-5'>Create Form</h1>
 
         <div className='input-gp my-3'>
-
           <label htmlFor=''>Title</label>
           <input className='form-control my-2' type='text' onChange={e => setTitle(e.target.value)}  ></input>
-
         </div>
         <div className='input-gp my-3'>
-          <label htmlFor='last_name'>Description</label>
-          <input className='form-control my-2' name='last_name' type='text' onChange={e => setDescription(e.target.value)}></input>
+          <label htmlFor=''>Description</label>
+          <input className='form-control my-2' type='text' onChange={e => setDescription(e.target.value)}></input>
         </div>
 
         <div className='input-gp my-3'>
-
           <label htmlFor='d'>Book_id</label>
           <input className='form-control my-2' onChange={e => setBook_Id(e.target.value)}></input>
-
         </div>
-        <button className='btn btn-success'>Add</button>
+
+        <button className='btn btn-success'>Submit</button>
 
       </form>
     </div>
