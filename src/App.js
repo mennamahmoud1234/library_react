@@ -14,15 +14,18 @@ import EditChapter from "./pages/chapters/component/EditChapter";
 import Notfound from "./Notfound"
 function App() {
   return (
-<<<<<<< HEAD
+
     <>
       <Header />
       <Outlet />
 
 
       <Routes>
+        <Route path='*' element={<Notfound />}></Route>
         <Route path='/' element={<Home />}></Route>
+
         <Route path='/Create' element={<Create />}></Route>
+
         <Route path='/EditChapter/:id' element={<EditChapter />}></Route>
 
 
@@ -41,26 +44,6 @@ function App() {
     </>
 
 
-=======
-   <>
-   <Header/>
-   <Outlet/>
-  
-
-   <Routes>
-       <Route path='*' element={<Notfound/>}></Route>
-      <Route path='/' element={<Home/>}></Route>
-      
-      <Route path='/Create' element={<Create/>}></Route>
-      
-      <Route path='/EditChapter/:id' element={<EditChapter/>}></Route>
-      
-    </Routes>
-    <Footer/>
-   
-   
-   </>
->>>>>>> b3f60b8e897e91c27ebc5b442158a358a2212b9e
   );
 };
 
