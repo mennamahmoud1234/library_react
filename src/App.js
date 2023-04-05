@@ -6,15 +6,16 @@ import { Routes,Route } from 'react-router-dom';
 import Create   from "./pages/chapters/component/Create";
 import Home from './pages/chapters/Home';
 import EditChapter from "./pages/chapters/component/EditChapter";
+import Notfound from "./Notfound"
 function App() {
   return (
    <>
    <Header/>
    <Outlet/>
-   <Footer/>
+  
 
    <Routes>
-      
+       <Route path='*' element={<Notfound/>}></Route>
       <Route path='/' element={<Home/>}></Route>
       
       <Route path='/Create' element={<Create/>}></Route>
@@ -22,7 +23,7 @@ function App() {
       <Route path='/EditChapter/:id' element={<EditChapter/>}></Route>
       
     </Routes>
-   
+    <Footer/>
    
    
    </>

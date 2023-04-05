@@ -5,11 +5,11 @@ import axios from 'axios';
 const Home = () => {
     // eslint-disable-next-line
     const [chapter,setChapter] = useState([]);
-
+  
 
     const getData = async () => {
         try{
-          const {data} = await axios.get("http://localhost:4000/chapters");
+          const {data} = await axios.get("http://localhost:4000/chapters/7");
           setChapter(data)
         }
         catch(err) {
@@ -21,6 +21,21 @@ const Home = () => {
         getData();
     }, []);
 
+
+    const  handleDelete= async(id) =>
+    {
+try{
+
+    await axios.delete("http://localhost:4000/chapters/"+id)
+    window.location.reload()
+
+}
+catch (error)
+{
+console.log(error);
+}
+
+    }
     return (
         <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
             <div className="w-50 bg-white rounded p-3">
@@ -51,7 +66,7 @@ const Home = () => {
                   <td>{data.Description}</td>
                   <td>
                   <Link to={`EditChapter/${data.id}`} className='btn btn-primary'>Update</Link>
-                  <Link className='btn btn-danger ms-2'>Delete</Link>
+                  <button className='btn btn-danger ms-2' onClick={e=>handleDelete(data.id)}>Delete</button>
                   </td>
                   </tr>
 
