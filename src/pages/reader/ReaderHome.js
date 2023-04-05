@@ -8,29 +8,13 @@ const ReaderHome = () => {
 
     // get and set data
     const [reader, setReader] = useState([]);
+    const [deleted, setDeleted] = useState([]);
 
     // header for admin auth
     const headers = {
         'admin': '1'
     };
 
-    //function to pass in useeffect to fetch data from api
-    // const getData = () => {
-    //     try {
-    //         const { data } = await axios.get("http://localhost:4000/reader", { headers });
-    //         setReader(data) // data that take from api pass it to func setReader in usestate
-    //     }
-    //     catch (err) {
-    //         console.log(err);
-    //     }
-    //     axios.get("http://localhost:4000/reader", { headers });
-    //     .then(response => {
-    //         setReader(response.data);
-    //       })
-    //       .catch(error => {
-    //         console.error(error);
-    //       });
-    // };
 
     useEffect(() => {
         axios.get("http://localhost:4000/reader", { headers })
@@ -43,10 +27,19 @@ const ReaderHome = () => {
     }, []);
 
 
-    //fetch data from api
-    // useEffect(() => {
-    //     getData();
-    // }, []);
+
+    const handleDelete = (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this reader?");
+        if (confirmDelete) {
+            axios.delete(`http://localhost:4000/reader/${id}`, { headers })
+                .then(response => {
+                    setDeleted(!deleted);
+                    alert("Reader successfully deleted.");
+                    window.location.reload()
+                })
+                .catch(error => console.error(error));
+        }
+    }
 
 
     return (
@@ -72,9 +65,9 @@ const ReaderHome = () => {
                                 <td>{data.phone}</td>
                                 <td>{data.Status}</td>
                                 <td>
-                                    <Link to="/UpdateReader" className="btn btn-primary"> Update</Link > |
-                                    <Link to="/DeleteReader" className="btn btn-danger ms-2"> Delete</Link > |
-                                    <Link to="/DetailsReader" className="btn btn-success ms-2"> Details</Link >
+                                    <Link to={`/UpdateReader/${data.id}`} className="btn btn-primary"> Update</Link > |
+                                    <Link className="btn btn-danger ms-2" onClick={e => handleDelete(data.id)}> Delete</Link > |
+                                    <Link to={`/DetailsReader/${data.id}`} className="btn btn-success ms-2"> Details</Link >
                                 </td>
                             </tr>
                         ))

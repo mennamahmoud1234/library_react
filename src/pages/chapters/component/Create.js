@@ -57,10 +57,6 @@ function Create() {
 
       </form>
     </div>
-
-
-
-
   )
 }
 export default Create

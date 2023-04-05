@@ -1,39 +1,37 @@
 import { useEffect, useState } from "react";
- import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const Home = () => {
     // eslint-disable-next-line
-    const [chapter,setChapter] = useState([]);
-  
+    const [chapter, setChapter] = useState([]);
+
 
     const getData = async () => {
-        try{
-          const {data} = await axios.get("http://localhost:4000/chapters/7");
-          setChapter(data)
+        try {
+            const { data } = await axios.get("http://localhost:4000/chapters/7");
+            setChapter(data)
         }
-        catch(err) {
-          console.log(err);
+        catch (err) {
+            console.log(err);
         }
-      };
+    };
 
     useEffect(() => {
         getData();
     }, []);
 
 
-    const  handleDelete= async(id) =>
-    {
-try{
+    const handleDelete = async (id) => {
+        try {
 
-    await axios.delete("http://localhost:4000/chapters/"+id)
-    window.location.reload()
+            await axios.delete("http://localhost:4000/chapters/" + id)
+            window.location.reload()
 
-}
-catch (error)
-{
-console.log(error);
-}
+        }
+        catch (error) {
+            console.log(error);
+        }
 
     }
     return (
@@ -59,20 +57,20 @@ console.log(error);
 
 
                         {
-               chapter.map((data,i)=>(
-                  <tr key={i}>
-                  <td>{data.id}</td>
-                  <td>{data.Title}</td>
-                  <td>{data.Description}</td>
-                  <td>
-                  <Link to={`EditChapter/${data.id}`} className='btn btn-primary'>Update</Link>
-                  <button className='btn btn-danger ms-2' onClick={e=>handleDelete(data.id)}>Delete</button>
-                  </td>
-                  </tr>
+                            chapter.map((data, i) => (
+                                <tr key={i}>
+                                    <td>{data.id}</td>
+                                    <td>{data.Title}</td>
+                                    <td>{data.Description}</td>
+                                    <td>
+                                        <Link to={`EditChapter/${data.id}`} className='btn btn-primary'>Update</Link>
+                                        <button className='btn btn-danger ms-2' onClick={e => handleDelete(data.id)}>Delete</button>
+                                    </td>
+                                </tr>
 
-                ))
-               }
-              
+                            ))
+                        }
+
 
 
                     </tbody>

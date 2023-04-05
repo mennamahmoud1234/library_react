@@ -7,7 +7,6 @@ import Create from "./pages/chapters/component/Create";
 import Home from './pages/chapters/Home';
 import ReaderHome from './pages/reader/ReaderHome';
 import AddReader from './pages/reader/components/AddReader';
-import DeleteReader from './pages/reader/components/DeleteReader';
 import UpdateReader from './pages/reader/components/UpdateReader';
 import DetailsReader from './pages/reader/components/DetailsReader';
 import EditChapter from "./pages/chapters/component/EditChapter";
@@ -33,9 +32,8 @@ function App() {
         {/* reader */}
         <Route path='/reader' element={<ReaderHome />}></Route>
         <Route path='/AddReader' element={<AddReader />}></Route>
-        <Route path='/DeleteReader' element={<DeleteReader />}></Route>
-        <Route path='/UpdateReader' element={<UpdateReader />}></Route>
-        <Route path='/DetailsReader' element={<DetailsReader />}></Route>
+        <Route path='/UpdateReader/:id' element={<UpdateReader />}></Route>
+        <Route path='/DetailsReader/:id' element={<DetailsReader />}></Route>
 
       </Routes>
 
